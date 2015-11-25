@@ -1,4 +1,5 @@
 var idpList = 'https://solid.github.io/solid-idp-list/services.json';
+var recommended = ['https://databox.me/'];
 
 /* ---- DON'T EDIT BELOW ---- */
 var accURL = {};
@@ -46,6 +47,26 @@ var list = function(data) {
     var header_link = document.createElement('a');
     header_link.href = safeHTML(idp.url);
     header.appendChild(header_link);
+
+    // recommended?
+    if (idp.url && idp.url.length > 0) {
+      for (var i in recommended) {
+        if (recommended[i] == idp.url) {
+          var rec = document.createElement('div');
+          rec.classList.add('recommended');
+          rec.innerHTML = "Recommended";
+          if (idp.btn_bg && idp.btn_bg.length > 0) {
+            rec.style.background = safeHTML(idp.btn_bg);
+          }
+          if (idp.btn_color && idp.btn_color.length > 0) {
+            rec.style.color = safeHTML(idp.btn_color);
+          }
+          header_link.appendChild(rec);
+          break;
+        }
+      }
+    }
+
     // icon
     if (idp.icon && idp.icon.length > 0) {
       var img = document.createElement('img');

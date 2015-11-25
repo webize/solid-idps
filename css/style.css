@@ -78,6 +78,17 @@ a { text-decoration: none; }
   text-align: justify;
 }
 
+.recommended {
+  font-weight: 200;
+  font-size: small;
+  color: #fff;
+  background: #43C47A;
+  border-radius: 3px;
+  padding: 0 4px;
+  margin-top: 15px;
+  position: absolute;
+}
+
 .buttons {
 	padding: 14px 0 14px 0;
   text-align: center;
