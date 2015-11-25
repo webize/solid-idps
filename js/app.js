@@ -43,29 +43,35 @@ var list = function(data) {
     var header = document.createElement('header');
     header.style.background = (idp.icon_bg && idp.icon_bg.length > 0)?safeHTML(idp.icon_bg):'';
     card.appendChild(header);
+    var header_link = document.createElement('a');
+    header_link.href = safeHTML(idp.url);
+    header.appendChild(header_link);
     // icon
     if (idp.icon && idp.icon.length > 0) {
       var img = document.createElement('img');
       img.src = safeHTML(idp.icon);
       img.classList.add('roundicon');
-      header.appendChild(img);
+      header_link.appendChild(img);
     } else {
       var img = '<div class="pad15">'+
       '      <div class="icon-placeholder">'+
       '        <div class="smiley">°⏑°</div>'+
       '      </div>'+
       '    </div>';
-      header.insertAdjacentHTML('beforeend', img);
+      header_link.insertAdjacentHTML('beforeend', img);
     }
 
     // title
-    var title = document.createElement('div');
-    title.classList.add('title');
-    title.innerHTML = (idp.title && idp.title.length > 0)?safeHTML(idp.title):'';
-    if (idp.title_color && idp.title_color.length > 0) {
-      title.style.color = safeHTML(idp.title_color);
+    if (idp.title && idp.title.length > 0) {
+      var title = document.createElement('div');
+      title.classList.add('title');
+      title.innerHTML = safeHTML(idp.title);
+      header_link.title = "Take me to " + safeHTML(idp.title);
+      if (idp.title_color && idp.title_color.length > 0) {
+        title.style.color = safeHTML(idp.title_color);
+      }
+      header_link.appendChild(title);
     }
-    header.appendChild(title);
 
     // article
     var article = document.createElement('article');
@@ -113,15 +119,17 @@ var list = function(data) {
 
   var howto = '<div class="card">'+
     '  <header>'+
+    '   <a href="https://github.com/solid/solid-idp-list/">'+
     '    <div class="pad15">'+
     '      <div class="icon-placeholder">'+
     '        <div class="smiley">°⏑°</div>'+
     '      </div>'+
     '    </div>'+
-    '    <div class="title">Your service</div>'+
+    '    <div class="title">&lt;Your service&gt;</div>'+
+    '   </a>'+
     '  </header>'+
     '  <article>'+
-    '    <p>Would you like to have your server listed here?</p>'+
+    '    <p>Would you like to have your service name listed here?</p>'+
     '    <p>Click the button below to learn how you can register as an official Solid account provider.</p>'+
     '  </article>'+
     '  <footer>'+
