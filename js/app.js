@@ -118,7 +118,7 @@ var list = function(data) {
     '        <div class="smiley">°⏑°</div>'+
     '      </div>'+
     '    </div>'+
-    '    <div class="title">Your title here</div>'+
+    '    <div class="title">Your service</div>'+
     '  </header>'+
     '  <article>'+
     '    <p>Would you like to have your server listed here?</p>'+
