@@ -11,7 +11,7 @@ var queryVals = (function(a) {
         if (p.length == 1)
             b[p[0]] = "";
         else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            b[p[0]] = p[1].replace(/\+/g, " ");
     }
     return b;
 })(window.location.search.substr(1).split('&'));
@@ -93,6 +93,9 @@ var list = function(data) {
     var button = document.createElement('a');
     button.innerHTML = "Take me there";
     button.href = (idp.url && idp.url.length > 0)?safeHTML(idp.url):'#';
+    if (queryVals['origin'] && queryVals['origin'].length > 0) {
+      button.href += '?origin='+queryVals['origin'];
+    }
     button.classList.add('button');
     if (idp.btn_bg && idp.btn_bg.length > 0) {
       button.style.background = safeHTML(idp.btn_bg);
