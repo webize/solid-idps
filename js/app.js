@@ -1,4 +1,4 @@
-var idpList = 'https://solid.github.io/solid-idp-list/services.json';
+var idpList = 'https://webize.github.io/solid-idp-list/services.json';
 var recommended = ['https://databox.me/'];
 
 /* ---- DON'T EDIT BELOW ---- */
